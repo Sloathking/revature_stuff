@@ -1,2 +1,3 @@
 add item
 remove item
+clear cart
