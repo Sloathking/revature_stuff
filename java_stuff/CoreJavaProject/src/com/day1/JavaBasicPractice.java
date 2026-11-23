@@ -10,7 +10,7 @@ public class JavaBasicPractice {
         int ans = Task1(-12345);
         System.out.println(ans);
 
-        Task2(3);
+        Task2();
 
         Task3("Programming");
 
@@ -46,23 +46,20 @@ public class JavaBasicPractice {
 
         int res = 0;
         while (num != 0) {
+        	if (res > Integer.MAX_VALUE / 10 || res < Integer.MIN_VALUE / 10) {
+        		System.out.println("Overflow detected");
+        		return -1;
+        	}
             int digit = num % 10;
             res = (res * 10) + digit;
             num /= 10;
-            if (res > Integer.MAX_VALUE / 10 || res < Integer.MIN_VALUE / 10) {
-                System.out.println("Overflow detected");
-                return -1;
-            }
         }
         
         return res;
     }
 
-    private static boolean IsVowel(char c) {
-        return "AEIOUaeiou".indexOf(c) != -1;
-    }
 
-    public static void Task2(double num) {
+    public static void Task2() {
         int a = 10;
         double d = 3.5;
 
@@ -74,14 +71,17 @@ public class JavaBasicPractice {
 
         System.out.println(ch);
         System.out.println((char)value);
-
-        System.out.println(num);
     }
 
+    private static boolean IsVowel(char c) {
+    	return "AEIOUaeiou".indexOf(c) != -1;
+    }
+    
     public static void Task3(String str) {
         int vowelCnt = 0;
         int consCnt = 0;
         for (int i = 0; i < str.length(); ++i) {
+        	if (!Character.isLetter(str.charAt(i))) continue;
             if (IsVowel(str.charAt(i))) vowelCnt++;
             else consCnt++;
         }
@@ -208,6 +208,8 @@ public class JavaBasicPractice {
     }
 
     public static void Task12(String s) {
+    	if (s.isEmpty()) return;
+    	
         StringBuilder sb = new StringBuilder();
         int count = 1;
         char c = s.charAt(0);
@@ -231,7 +233,7 @@ public class JavaBasicPractice {
         StringBuilder sb = new StringBuilder();
         for (int i = words.length - 1; i >= 0; i--) {
             sb.append(words[i]);
-            sb.append(" ");
+            if (i != 0) sb.append(" ");
         }
         System.out.println(sb.toString());
     }
