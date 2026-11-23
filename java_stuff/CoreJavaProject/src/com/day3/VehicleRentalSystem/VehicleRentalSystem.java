@@ -6,6 +6,7 @@ import java.util.List;
 
 public class VehicleRentalSystem {
 	public static void main(String[] args) {
+		// Polymorphism used to allow storage of both Car and Bike in the same container
 		List<Vehicle> vehicles = new ArrayList<>();
 		Scanner sc = new Scanner(System.in);
 		
@@ -38,10 +39,12 @@ public class VehicleRentalSystem {
 				System.out.print("Enter Insurance per Day: ");
 				double insurance = sc.nextDouble();
 				sc.nextLine();
+				// declared as Vehicle to use polymorphism to store a Car as a vehicle
 				Vehicle temp = new Car(vehicleNum, model, rate, days, insurance);
 				vehicles.add(temp);
 			}
 			else {
+				// declared as Vehicle to use polymorphism to store a Bike as a vehicle
 				Vehicle temp = new Bike(vehicleNum, model, rate, days);
 				vehicles.add(temp);
 			}

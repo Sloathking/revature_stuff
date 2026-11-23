@@ -1,5 +1,6 @@
 package com.day3.VehicleRentalSystem;
 
+// inheriting from Vehicle, polymorphism used to override parent class methods
 public class Car extends Vehicle {
 	double insuranceCharge;
 	
@@ -19,6 +20,5 @@ public class Car extends Vehicle {
 		// TODO Auto-generated method stub
 		return "Car\t| " + super.displayDetails();
 	}
-	
 	
 }

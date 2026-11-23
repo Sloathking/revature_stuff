@@ -1,5 +1,6 @@
 package com.day3.VehicleRentalSystem;
 
+// inheriting from Vehicle, polymorphism used to override parent class methods
 public class Bike extends Vehicle {
 	double discount = 0.10;
 	
