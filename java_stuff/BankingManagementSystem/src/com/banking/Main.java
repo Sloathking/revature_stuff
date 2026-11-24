@@ -1,14 +1,27 @@
 package com.banking;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+
+import com.banking.operations.BankingOperations;
+import com.banking.model.*;
 
 public class Main {
 
 	public static void main(String[] args) {
 		// Application entry point; displays the menu and controls the console workflow
+		
 		boolean running = true;
+		
+		BankOperations bank = new BankingOperations();
+		
+		List<Customer> customers = new ArrayList<>();
+		List<Account> accounts = new ArrayList<>();
+		
 		Scanner sc = new Scanner(System.in);
+		
 		while (running) {
 			printMenu();
 			try {
@@ -17,8 +30,10 @@ public class Main {
 			
 				switch (choice) {
 				case 1:	// Create Customer
+					customers.add(bank.createCustomer(sc));
 					break;
 				case 2:	// Create bank account
+					accounts.add(bank.createAccount(sc));
 					break;
 				case 3:	// View customer details
 					break;
