@@ -1,0 +1,15 @@
+1. What is the difference between throw and throws?
+    'throw' is the act of sending out an exception, it instantiates the exception and sends it out for some part of the program to respond to.
+    'throws' is for notifying developers that a method MAY throw an exception and to plan for responding to that throw.
+
+2. Why did the compiler force you to handle AttendanceShortageException but not InvalidMarksException?
+    One is a checked exception and the other is an unchecked exception.
+
+3. When does the finally block run?
+    A finally block runs whenever a 'try' block exits.
+
+4. Why is it better to check email == null than to catch NullPointerException?
+    Reduces programming overhead by not requiring a try-catch block for string validation.
+
+5. Name one more custom exception the portal could use, and say whether it should be checked or unchecked.
+    Could use a UnknownSubjectException to be more explicit about not having the stated subject, and checked to notify that an incorrect subject was submitted.
