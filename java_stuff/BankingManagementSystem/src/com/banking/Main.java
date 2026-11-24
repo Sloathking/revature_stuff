@@ -3,6 +3,7 @@ package com.banking;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 
 import com.banking.operations.BankingOperations;
@@ -17,8 +18,20 @@ public class Main {
 		
 		BankOperations bank = new BankingOperations();
 		
-		List<Customer> customers = new ArrayList<>();
-		List<Account> accounts = new ArrayList<>();
+		List<Customer> customers = new ArrayList<>(Arrays.asList(
+				new Customer("Jonathan Joestar", "jonathan.joestar@email.com", "123-456-7890"),
+				new Customer("Dio Brando", "dio.brando@email.com", "123-456-7890"),
+				new Customer("Robert Speedwagon", "robert.speedwagon@email.com", "123-456-7890"),
+				new Customer("Lisa Lisa", "lisa2@email.com", "123-456-7890"),
+				new Customer("Joseph Joestar", "joseph.joestar@email.com", "123-456-7890")
+				));
+		List<Account> accounts = new ArrayList<>(Arrays.asList(
+				new Account(1, "Checking", 150),
+				new Account(1, "Savings", 3000),
+				new Account(2, "Checking", 10000),
+				new Account(2, "Savings", 1),
+				new Account(3, "Checking", 2300)
+				));
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -36,16 +49,27 @@ public class Main {
 					accounts.add(bank.createAccount(sc));
 					break;
 				case 3:	// View customer details
+					System.out.print("Enter Customer ID: ");
+					int id = sc.nextInt();
+					sc.nextLine();
+					for (Customer c : customers)
+						if (c.getId() == id)
+							bank.customerDetails(sc, c);
 					break;
 				case 4:	// Deposit money
+					bank.depositMoney(sc);
 					break;
 				case 5:	// Withdraw money
+					bank.withdrawMoney(sc);
 					break;
 				case 6:	// Check account balance
+					bank.checkAccountBalance(sc);
 					break;
 				case 7:	// Transfer money
+					bank.transferMoney(sc);
 					break;
 				case 8:	// View transaction history
+					bank.viewTransactionHistory(sc);
 					break;
 				case 9:	// Exit
 					running = false;

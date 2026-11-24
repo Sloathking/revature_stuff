@@ -44,9 +44,40 @@ public class BankingOperations implements BankOperations {
 	}
 
 	@Override
-	public void customerDetails(int custId) {
+	public void customerDetails(Scanner sc, Customer c) {
 		// TODO Auto-generated method stub
-		System.out.println("Customer Details...");
+		System.out.println(c);
+		sc.nextLine();
+	}
+
+	@Override
+	public void depositMoney(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void withdrawMoney(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void checkAccountBalance(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void transferMoney(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void viewTransactionHistory(Scanner sc) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
