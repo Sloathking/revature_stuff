@@ -1,8 +1,10 @@
 package com.banking.operations;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.banking.BankOperations;
+import com.banking.Main;
 import com.banking.model.*;
 
 // Declares banking operations that the application supports
@@ -44,9 +46,17 @@ public class BankingOperations implements BankOperations {
 	}
 
 	@Override
-	public void customerDetails(Scanner sc, Customer c) {
+	public void customerDetails(Scanner sc) {
 		// TODO Auto-generated method stub
-		System.out.println(c);
+		System.out.print("Enter Customer ID: ");
+		int i = sc.nextInt();
+		sc.nextLine();
+		Customer temp = Main.getCustomer(i - 1);
+		if (temp == null) {
+			System.out.println("No customer by that ID.");
+			return;
+		}
+		System.out.println(temp);
 		sc.nextLine();
 	}
 
@@ -65,7 +75,16 @@ public class BankingOperations implements BankOperations {
 	@Override
 	public void checkAccountBalance(Scanner sc) {
 		// TODO Auto-generated method stub
-		
+		System.out.print("Enter Customer ID: ");
+		int i = sc.nextInt();
+		sc.nextLine();
+		List<Account> temp = Main.getCustomerAccounts(i);
+		if (temp.isEmpty()) {
+			System.out.println("No accounts for that ID.");
+			return;
+		}
+		System.out.println(temp);
+		sc.nextLine();
 	}
 
 	@Override

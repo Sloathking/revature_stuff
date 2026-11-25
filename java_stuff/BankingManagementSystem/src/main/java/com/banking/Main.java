@@ -10,6 +10,21 @@ import com.banking.operations.BankingOperations;
 import com.banking.model.*;
 
 public class Main {
+	static List<Customer> customers = new ArrayList<>(Arrays.asList(
+			new Customer("Jonathan Joestar", "jonathan.joestar@email.com", "123-456-7890"),
+			new Customer("Dio Brando", "dio.brando@email.com", "123-456-7890"),
+			new Customer("Robert Speedwagon", "robert.speedwagon@email.com", "123-456-7890"),
+			new Customer("Lisa Lisa", "lisa2@email.com", "123-456-7890"),
+			new Customer("Joseph Joestar", "joseph.joestar@email.com", "123-456-7890")
+			));
+	
+	static List<Account> accounts = new ArrayList<>(Arrays.asList(
+			new Account(1, "Checking", 150),
+			new Account(1, "Savings", 3000),
+			new Account(2, "Checking", 10000),
+			new Account(2, "Savings", 1),
+			new Account(3, "Checking", 2300)
+			));
 
 	public static void main(String[] args) {
 		// Application entry point; displays the menu and controls the console workflow
@@ -17,21 +32,6 @@ public class Main {
 		boolean running = true;
 		
 		BankOperations bank = new BankingOperations();
-		
-		List<Customer> customers = new ArrayList<>(Arrays.asList(
-				new Customer("Jonathan Joestar", "jonathan.joestar@email.com", "123-456-7890"),
-				new Customer("Dio Brando", "dio.brando@email.com", "123-456-7890"),
-				new Customer("Robert Speedwagon", "robert.speedwagon@email.com", "123-456-7890"),
-				new Customer("Lisa Lisa", "lisa2@email.com", "123-456-7890"),
-				new Customer("Joseph Joestar", "joseph.joestar@email.com", "123-456-7890")
-				));
-		List<Account> accounts = new ArrayList<>(Arrays.asList(
-				new Account(1, "Checking", 150),
-				new Account(1, "Savings", 3000),
-				new Account(2, "Checking", 10000),
-				new Account(2, "Savings", 1),
-				new Account(3, "Checking", 2300)
-				));
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -49,12 +49,7 @@ public class Main {
 					accounts.add(bank.createAccount(sc));
 					break;
 				case 3:	// View customer details
-					System.out.print("Enter Customer ID: ");
-					int id = sc.nextInt();
-					sc.nextLine();
-					for (Customer c : customers)
-						if (c.getId() == id)
-							bank.customerDetails(sc, c);
+					bank.customerDetails(sc);
 					break;
 				case 4:	// Deposit money
 					bank.depositMoney(sc);
@@ -102,5 +97,29 @@ public class Main {
 		System.out.println("8. View Transaction History");
 		System.out.println("9. Exit");
 		System.out.print("Enter your choice: ");
+	}
+	
+	public static Customer getCustomer(int ind) {
+		if (ind >= customers.size()) {
+			System.out.println("Invalid index");
+			return null;
+		}
+		return customers.get(ind);
+	}
+	
+	public static List<Customer> getCustomers() {
+		return customers;
+	}
+	
+	public static List<Account> getCustomerAccounts(int custId) {
+		List<Account> temps = new ArrayList<>();
+		for (Account a : accounts)
+			if (a.getCustomerId() == custId)
+				temps.add(a);
+		return temps;
+	}
+	
+	public static List<Account> getAccounts() {
+		return accounts;
 	}
 }
